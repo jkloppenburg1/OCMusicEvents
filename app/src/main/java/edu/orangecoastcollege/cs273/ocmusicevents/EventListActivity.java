@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import static edu.orangecoastcollege.cs273.ocmusicevents.MusicEvent.details;
-
 public class EventListActivity extends ListActivity {
 
     @Override
@@ -30,14 +28,17 @@ public class EventListActivity extends ListActivity {
         // Make a new Intent
 
         String title = MusicEvent.titles[pos];
-        Intent detailsIntent = new Intent(this, EventDetailsActivity);
+        Intent detailsIntent = new Intent(this, EventDetailsActivity.class);
+
+        String details = MusicEvent.details[pos];
 
 
         // Put the Strings into the Intent
         detailsIntent.putExtra("Title", title);
+        detailsIntent.putExtra("Details", details);
 
         // Start activity
-
+        startActivity(detailsIntent);
     }
 
 
